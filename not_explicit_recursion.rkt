@@ -1,7 +1,4 @@
-;; The first three lines of this file were inserted by DrRacket. They record metadata
-;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname recursion-abstract) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
-;; ?? Lazy-function/Y-combinator ??
+;; Recursions defined without explicitly calling itself
 
 (define collatz
   ((lambda (f) (f f))    
@@ -60,20 +57,3 @@
                (lambda (i p1 p2)
                  (cond [(= i n) (+ p1 p2)]
                        [else ((r r) (add1 i) (+ p1 p2) p1)])))) 2 1 0)])))
-
-
-;; !! The Lazy Implementation !!
-;; it crushes...
-
-;; (define Y
-;;   (λ (f) ((λ (x) (f (x x))) (λ (x) (f (x x))))))
-;; (define Fact
-;;   (Y (λ (fact) (λ (n) (if (zero? n) 1 (* n (fact (- n 1))))))))
-
-;; (define Fib
-;;   (Y (λ (fib) (λ (n) (if (<= n 1) n (+ (fib (- n 1)) (fib (- n 2))))))))
-
-
-       
-       
-   
